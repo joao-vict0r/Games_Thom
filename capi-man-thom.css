@@ -1,0 +1,15 @@
+:root{--bg:#041a20;--fg:#d8fff0;--mut:#7fb8a8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#03141a;--fg:#d8fff0;--mut:#7fb8a8}}
+:root[data-theme="dark"]{--bg:#03141a;--fg:#d8fff0;--mut:#7fb8a8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{background:radial-gradient(120% 70% at 50% 0,#0b3d42,transparent 70%) no-repeat var(--bg);color:var(--fg);font:600 14px/1.35 Fredoka,"Trebuchet MS","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px}
+#sc{color:#fff}#hs{color:#f5c542}#lv{color:#7fe8f2}#vd{font-size:18px;letter-spacing:2px;min-width:3.2em}
+#hud{display:flex;align-items:center;justify-content:space-between;width:min(100%,456px);padding:6px 16px;border:2px solid #1d6b57;border-radius:14px;background:#06262b;font:700 24px/1 Fredoka,"Trebuchet MS",system-ui,sans-serif}
+#bar{display:flex;align-items:center;justify-content:space-between;gap:10px;width:min(100%,456px);min-height:38px;padding:6px 16px;border:2px solid #1d6b57;border-radius:12px;background:#06262b;color:var(--mut);font-size:14px}
+#bar.on{color:#ffd24a;border-color:#f5c542;box-shadow:0 0 14px #f5c54255}
+#cd{font-size:22px;color:#ffd24a}
+#mu{background:none;border:0;padding:0;font-size:16px;line-height:1;cursor:pointer}
+canvas{display:block;width:min(100%,456px,calc((100vh - 170px)*.9047));height:auto;background:#04171c;border:3px solid #3ddc97;border-radius:18px;box-shadow:0 0 22px #3ddc9755;touch-action:none}
+p{margin:2px 0 0;color:var(--mut);font-size:12px;text-align:center;max-width:456px}
