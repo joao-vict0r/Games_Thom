@@ -234,7 +234,8 @@ function isFullscreen(){return Boolean(document.fullscreenElement||document.webk
 function updateFullscreenButton(){
   if(!fsButton)return;
   const active=isFullscreen();
-  fsButton.textContent=active?'Sair da tela inteira':'Tela inteira';
+  fsButton.textContent='⛶';
+  fsButton.title=active?'Sair da tela inteira':'Tela inteira';
   fsButton.setAttribute('aria-label',active?'Sair da tela inteira':'Entrar em tela inteira');
   fsButton.setAttribute('aria-pressed',String(active));
 }
