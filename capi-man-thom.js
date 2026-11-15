@@ -228,5 +228,39 @@ function loop(t){
   }
   draw();requestAnimationFrame(loop);
 }
+
+const fsButton=$('fs');
+function isFullscreen(){return Boolean(document.fullscreenElement||document.webkitFullscreenElement)}
+function updateFullscreenButton(){
+  if(!fsButton)return;
+  const active=isFullscreen();
+  fsButton.textContent=active?'Sair da tela inteira':'Tela inteira';
+  fsButton.setAttribute('aria-label',active?'Sair da tela inteira':'Entrar em tela inteira');
+  fsButton.setAttribute('aria-pressed',String(active));
+}
+async function toggleFullscreen(){
+  const root=document.documentElement;
+  try{
+    if(isFullscreen()){
+      if(document.exitFullscreen)await document.exitFullscreen();
+      else if(document.webkitExitFullscreen)document.webkitExitFullscreen();
+      return;
+    }
+    if(root.requestFullscreen)await root.requestFullscreen({navigationUI:'hide'});
+    else if(root.webkitRequestFullscreen)root.webkitRequestFullscreen();
+    else{
+      fsButton.disabled=true;
+      fsButton.textContent='Tela inteira indisponível';
+    }
+  }catch(e){
+    updateFullscreenButton();
+  }
+}
 $('mu').onclick=e=>{tgl();e.currentTarget.blur()};
+if(fsButton){
+  fsButton.addEventListener('click',toggleFullscreen);
+  document.addEventListener('fullscreenchange',updateFullscreenButton);
+  document.addEventListener('webkitfullscreenchange',updateFullscreenButton);
+  updateFullscreenButton();
+}
 newGame();requestAnimationFrame(loop);
